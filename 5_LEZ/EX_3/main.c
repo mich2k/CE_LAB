@@ -1,9 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// funzione che accetta un vettore di unsigned char
-// conti il numero degli elementi pari
-__declspec(naked) int pari(unsigned char* v, int lunghezza) {
+// dato un val
+// calcolarne il risultato
+
+__declspec(naked) int fattoriale(int val) {
 
 	__asm {
 		// inizio prima config
@@ -15,32 +16,19 @@ __declspec(naked) int pari(unsigned char* v, int lunghezza) {
 		// fine prima config
 
 
-		mov ebx, dword ptr[ebp + 8]	// 8 = primo parametro, array
-		mov esi, 0d // contatore globale
-		mov eax, 0d // contatore pari
-		mov edi, 2d // check parità
-		mov ecx, 0d
+		mov ebx, dword ptr[ebp + 8]	// 8 = primo parametro, val
 
-		ciclo :
-		cmp esi, dword ptr[ebp + 12] // risparmio un registro
+		// eax return value
+		mov eax, ebx
+		mov ecx, eax
+		ciclo:
+			sub ecx, 1d
+			cmp ecx, 0d
 			je fine
-
-			mov eax, dword ptr[ebx + 4 * esi]
-			mov edx, 0d	// edx conterrà il resto
-			div edi
-			cmp edx, 0d
-			je even_found
-			inc esi
+			imul ecx
 			jmp ciclo
 
-			even_found :
-		inc ecx
-			inc esi
-			jmp ciclo
-
-			fine :
-		mov eax, ecx
-
+		fine :
 			// inizio seconda config
 			pop ebx
 			pop esi
@@ -54,8 +42,7 @@ __declspec(naked) int pari(unsigned char* v, int lunghezza) {
 
 
 int main(void) {
-
-	unsigned char v[10] = { 1,2,3,4,5,6,7,8,9,10 };
-	printf("\n Ci sono %d numeri pari\n", pari(v, 10));
+	int val = 5;
+	printf("\nIl fattoriale e\' %d\n", fattoriale(val));
 	return EXIT_SUCCESS;
 }
