@@ -42,7 +42,7 @@ ciclo:
 		inc esi
 		jmp ciclo
 fine_ciclo:
-
+		mov eax, ebx
 
 pop edi
 pop esi

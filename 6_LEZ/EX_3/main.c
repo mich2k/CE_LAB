@@ -8,11 +8,16 @@ int primo(int* a, int* b, int lunghezza);
 
 int main() {
 	int len = 10;
-	int a[10] = { 3,4,5,6,7,8,9,10,11,12 };
+	int a[10] = { 3,4,5,6,7,8,9,10,11,37 };
 	int b[10] = { 0,0,0,0,0,0,0,0,0,0 };
-	printf("ci sono -> %d numeri primi \n", primo(a, b, 10));
-	for (int i = 0; i < len; i += 1)
+	printf("\t\nci sono -> %d numeri primi \n", primo(a, b, 10));
+	for (int i = 0; i < len; i += 1) {
+		printf("%d\t", *(a + i));
+	}
+	puts("");
+	for (int i = 0; i < len; i += 1) {
 		printf("%d\t", *(b + i));
+	}
 	puts("");
 	return EXIT_SUCCESS;
 }
