@@ -4,9 +4,10 @@
 int main()
 {
 	unsigned char src[6] = { 2, 3, 4, 4, 5, 8 };
-	int ret = togli_dispari(src, 6);
+	unsigned char dst[6] = { 0,0,0,0,0,0 };
+	int ret = togli_dispari(src, 6, dst);
 	for (int i = 0; i < 6; i++)
-		printf("%d ", src[i]);
+		printf("%d ", dst[i]);
 }
 /*
 .586
