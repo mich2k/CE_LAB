@@ -22,9 +22,14 @@ ciclo:
 	inc esi
 	jmp ciclo
 
+;	bh 4 bit	mov bh, 1
+;	bl 8 bit	mov bl, 44
+;	bx 16 bit
+;	ebx 32 bit	cambiato
+
 found:
-	mov bl, 44
-	mov byte ptr [ebx+esi], bl
+	mov byte ptr [ebx+esi], ','
+	;pop eax
 	inc edi
 	inc esi
 	jmp ciclo
