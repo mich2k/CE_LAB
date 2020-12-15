@@ -11,7 +11,6 @@ push ebx
 
 mov ebx, dword ptr[ebp+8] ; src
 mov ecx, dword ptr[ebp+16]	; dst
-mov edx, 0
 mov edx, dword ptr[ebp+12]
 add dl, '0'
 mov esi, 0
