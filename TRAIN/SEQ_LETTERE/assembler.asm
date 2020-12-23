@@ -2,7 +2,7 @@
 .model flat
 .code
 
-_cerca_combinazioni_numero proc
+_cerca_combinazioni_lettera proc
 push ebp
 mov ebp,esp
 push esi
@@ -12,7 +12,6 @@ push ebx
 mov ebx, dword ptr[ebp+8] ; src
 mov ecx, dword ptr[ebp+16]	; dst
 mov edx, dword ptr[ebp+12]
-add dl, '0'
 mov esi, 0
 mov edi,0
 mov eax, 0
@@ -57,5 +56,5 @@ mov esp, ebp
 pop ebp
 ret
 
-_cerca_combinazioni_numero endp
+_cerca_combinazioni_lettera endp
 end

@@ -2,7 +2,7 @@
 .model flat
 .code
 
-_cerca_combinazioni_numero proc
+_elimina_doppie proc
 push ebp
 mov ebp,esp
 push esi
@@ -10,20 +10,15 @@ push edi
 push ebx
 
 mov ebx, dword ptr[ebp+8] ; src
-mov ecx, dword ptr[ebp+16]	; dst
 mov edx, dword ptr[ebp+12]
-add dl, '0'
 mov esi, 0
 mov edi,0
 mov eax, 0
-
-mov dword ptr[ecx], 0
-mov dword ptr[ecx+4], 0
-mov dword ptr[ecx+8], 0
+mov ecx, 0
 
 primo_ciclo:
-	cmp edi, 0
-	jg found
+	cmp edi, 2
+	je found
 	keep:
 	mov edi, 0
 	_loop:
@@ -38,18 +33,26 @@ primo_ciclo:
 	jmp primo_ciclo
 
 found:
-	sub edi, 1
-	inc dword ptr[ecx+edi*4]
+	inc ecx	; contatore coppie
+	sub esi, 2
+	mov byte ptr[ebx+esi], ' '
+	dec esi
+	mov byte ptr[ebx+esi], ' '
+	add esi,3
 	jmp keep
 
 fine:
-	cmp edi, 0
-	je _end
-	sub edi, 1
-	inc dword ptr[ecx+edi*4]
+	cmp edi, 2
+	jne _end
+	inc ecx
+	sub esi, 2
+	mov byte ptr[ebx+esi], ' '
+	dec esi
+	mov byte ptr[ebx+esi], ' '
+	add esi,3
 
 _end:
-mov eax, 0d
+mov eax, ecx
 pop ebx
 pop edi
 pop esi
@@ -57,5 +60,5 @@ mov esp, ebp
 pop ebp
 ret
 
-_cerca_combinazioni_numero endp
+_elimina_doppie endp
 end
