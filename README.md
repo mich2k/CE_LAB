@@ -1,4 +1,2 @@
 # CE_LAB
-Laboratorio di Computer Architecture
-
-Possono essere accettate PR
+Laboratorio di Computer Architecture 2020/2021
